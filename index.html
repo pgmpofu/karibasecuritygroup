@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kariba Security Group — Security Built Into the Way You Build</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #0A0A0A;
+  color: #F5F2ED;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes cipherPulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.4; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes gridShimmer {
+  0%, 100% { opacity: 0.04; }
+  50% { opacity: 0.08; }
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.98) 0%, transparent 100%);
+}
+.nav-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: #C9974A;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: rgba(245,242,237,0.45);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: #C9974A; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,151,74,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,151,74,0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridShimmer 8s ease-in-out infinite;
+  mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, black 20%, transparent 70%);
+}
+
+.hero-glow {
+  position: absolute;
+  top: -30%;
+  right: -15%;
+  width: 70vw;
+  height: 70vw;
+  background: radial-gradient(circle, rgba(201,151,74,0.05) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 5rem;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  color: #C9974A;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background: #C9974A;
+  flex-shrink: 0;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.5rem, 5.5vw, 6rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease 0.25s both;
+}
+.hero-title-gold {
+  color: #C9974A;
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(245,242,237,0.55);
+  max-width: 460px;
+  margin-bottom: 3rem;
+  font-weight: 300;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2.2rem;
+  border: 1px solid #C9974A;
+  color: #C9974A;
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.8s ease 0.55s both;
+}
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #C9974A;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.hero-cta:hover::before { transform: scaleX(1); }
+.hero-cta:hover { color: #0A0A0A; }
+.hero-cta span { position: relative; z-index: 1; }
+
+.hero-visual {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
+}
+
+.cipher-block {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.63rem;
+  line-height: 1.9;
+  color: rgba(201,151,74,0.2);
+  letter-spacing: 0.08em;
+  user-select: none;
+  animation: cipherPulse 12s ease-in-out infinite;
+}
+.cipher-hi {
+  color: #C9974A;
+  font-weight: 500;
+}
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  border-top: 1px solid rgba(201,151,74,0.15);
+  border-bottom: 1px solid rgba(201,151,74,0.15);
+  padding: 0.9rem 0;
+  overflow: hidden;
+  background: rgba(201,151,74,0.02);
+}
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+}
+.marquee-item {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: rgba(245,242,237,0.3);
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.marquee-item::after {
+  content: '◆';
+  color: rgba(201,151,74,0.5);
+  font-size: 0.45rem;
+}
+
+/* ── SECTIONS ── */
+.section { padding: 8rem 4rem; }
+.section-dark {
+  background: #111111;
+  border-top: 1px solid rgba(201,151,74,0.12);
+  border-bottom: 1px solid rgba(201,151,74,0.12);
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  color: #C9974A;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 1.5rem;
+  height: 1px;
+  background: #C9974A;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 4.5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+  color: #F5F2ED;
+}
+
+.section-body {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(245,242,237,0.55);
+  max-width: 580px;
+}
+
+/* ── PROBLEM ── */
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7rem;
+  align-items: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 1rem;
+}
+
+.stat-block {
+  background: #1A1A1A;
+  padding: 2.2rem;
+  border: 1px solid rgba(201,151,74,0.15);
+  transition: border-color 0.3s, background 0.3s;
+}
+.stat-block:hover {
+  border-color: rgba(201,151,74,0.4);
+  background: #1F1F1F;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #C9974A;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: rgba(245,242,237,0.4);
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* ── SERVICES ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 4rem;
+}
+
+.service-card {
+  background: #111111;
+  border: 1px solid rgba(201,151,74,0.15);
+  padding: 3rem 2.5rem;
+  transition: border-color 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #C9974A, rgba(201,151,74,0.3));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.service-card:hover { border-color: rgba(201,151,74,0.35); }
+.service-card:hover::after { transform: scaleX(1); }
+
+.service-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(201,151,74,0.5);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.service-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  line-height: 1;
+}
+
+.service-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: #F5F2ED;
+}
+
+.service-desc {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: rgba(245,242,237,0.5);
+  margin-bottom: 2rem;
+}
+
+.service-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.service-list li {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(245,242,237,0.4);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+.service-list li::before {
+  content: '→';
+  color: #C9974A;
+  flex-shrink: 0;
+  margin-top: 0.05em;
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 8rem;
+  align-items: start;
+}
+
+.credential-list {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.credential {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  background: #1A1A1A;
+  border-left: 2px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+.credential:hover {
+  border-left-color: #C9974A;
+  background: #1F1F1F;
+}
+.credential-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #C9974A;
+  flex-shrink: 0;
+}
+.credential-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: rgba(245,242,237,0.65);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+.about-body p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: rgba(245,242,237,0.6);
+  margin-bottom: 1.75rem;
+}
+.about-body strong { color: #F5F2ED; font-weight: 500; }
+.about-body em { color: #C9974A; font-style: normal; }
+
+/* ── PROCESS ── */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 4rem;
+}
+
+.process-step {
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(201,151,74,0.15);
+  transition: border-color 0.3s, background 0.3s;
+}
+.process-step:hover {
+  border-color: rgba(201,151,74,0.3);
+  background: rgba(201,151,74,0.02);
+}
+
+.step-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(201,151,74,0.08);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  transition: color 0.3s;
+}
+.process-step:hover .step-number { color: rgba(201,151,74,0.15); }
+
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #F5F2ED;
+  margin-bottom: 0.75rem;
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: rgba(245,242,237,0.45);
+}
+
+/* ── CTA ── */
+.cta-section {
+  padding: 9rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #111111 0%, #0A0A0A 60%);
+  border-top: 1px solid rgba(201,151,74,0.12);
+}
+.cta-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(201,151,74,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cta-section .section-label { justify-content: center; }
+.cta-section .section-body { margin: 0 auto 3rem; text-align: center; }
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 2.8rem;
+  background: #C9974A;
+  color: #0A0A0A;
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn-primary:hover { background: #E8C080; transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.1rem 2.8rem;
+  border: 1px solid rgba(201,151,74,0.3);
+  color: rgba(245,242,237,0.55);
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.btn-secondary:hover {
+  border-color: #C9974A;
+  color: #C9974A;
+  transform: translateY(-1px);
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 2.5rem 4rem;
+  border-top: 1px solid rgba(201,151,74,0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #C9974A;
+  text-transform: uppercase;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: rgba(245,242,237,0.35);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: #C9974A; }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(245,242,237,0.25);
+  letter-spacing: 0.08em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  nav { padding: 1.5rem 2.5rem; }
+  .hero { grid-template-columns: 1fr; padding: 5rem 2.5rem 4rem; }
+  .hero-visual { display: none; }
+  .section { padding: 6rem 2.5rem; }
+  .problem-grid { grid-template-columns: 1fr; gap: 4rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 4rem; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+  .cta-section { padding: 6rem 2.5rem; }
+}
+
+@media (max-width: 600px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; }
+  .section { padding: 5rem 1.5rem; }
+  .process-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">KSG</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Application Security Consulting</div>
+    <h1 class="hero-title">
+      Security built<br>
+      into the <span class="hero-title-gold">way</span><br>
+      you build.
+    </h1>
+    <p class="hero-sub">
+      Most security problems aren't discovered during audits. They're written into codebases, baked into APIs, and shipped to production. KSG works with engineering teams to fix that — before it becomes a breach.
+    </p>
+    <a href="#contact" class="hero-cta">
+      <span>Start a conversation</span>
+      <span>→</span>
+    </a>
+  </div>
+
+  <div class="hero-visual">
+    <div class="cipher-block">
+POST /api/v2/auth/token HTTP/1.1<br>
+Authorization: Bearer <span class="cipher-hi">••••••••••••</span><br>
+Content-Type: application/json<br>
+<br>
+{<br>
+&nbsp;&nbsp;"grant_type": "client_credentials",<br>
+&nbsp;&nbsp;"scope": <span class="cipher-hi">"payments:write"</span>,<br>
+&nbsp;&nbsp;"client_id": "svc-payments-prod"<br>
+}<br>
+<br>
+HTTP/1.1 <span class="cipher-hi">200 OK</span><br>
+X-RateLimit-Remaining: 847<br>
+Strict-Transport-Security: max-age=31536000<br>
+<br>
+<span class="cipher-hi">// Secrets rotation ......... complete</span><br>
+<span class="cipher-hi">// CVEs resolved .............. 60/60</span><br>
+<span class="cipher-hi">// PII exposure ......... eliminated</span><br>
+<span class="cipher-hi">// Production ................. secured</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">API Security Assessment</span>
+    <span class="marquee-item">Secure Code Review</span>
+    <span class="marquee-item">AppSec Training</span>
+    <span class="marquee-item">Secrets Management</span>
+    <span class="marquee-item">OWASP Top 10</span>
+    <span class="marquee-item">CI/CD Security</span>
+    <span class="marquee-item">Vulnerability Remediation</span>
+    <span class="marquee-item">Authentication & Authorization</span>
+    <span class="marquee-item">API Security Assessment</span>
+    <span class="marquee-item">Secure Code Review</span>
+    <span class="marquee-item">AppSec Training</span>
+    <span class="marquee-item">Secrets Management</span>
+    <span class="marquee-item">OWASP Top 10</span>
+    <span class="marquee-item">CI/CD Security</span>
+    <span class="marquee-item">Vulnerability Remediation</span>
+    <span class="marquee-item">Authentication & Authorization</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section section-dark" id="problem">
+  <div class="problem-grid">
+    <div>
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">Your engineers are moving fast. Security isn't keeping up.</h2>
+      <p class="section-body">
+        Most startups and growing software teams know security matters. They also know they can't afford a full-time security hire — and that bolt-on security reviews after the fact rarely catch what's already embedded in the architecture.
+        <br><br>
+        KSG embeds security thinking directly into your engineering process, at the pace your team actually works.
+      </p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-block">
+        <div class="stat-number">83%</div>
+        <div class="stat-label">of breaches involve application-layer vulnerabilities</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">6×</div>
+        <div class="stat-label">cheaper to fix security issues in development than in production</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">60+</div>
+        <div class="stat-label">critical CVEs resolved for a single client in one engagement</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">3M+</div>
+        <div class="stat-label">customers protected across secured production systems</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Three ways we work<br>with engineering teams.</h2>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01 / 03</div>
+      <span class="service-icon">⬡</span>
+      <h3 class="service-name">Secure Code Review</h3>
+      <p class="service-desc">A structured review of your codebase for security vulnerabilities, anti-patterns, and compliance gaps — with actionable remediation guidance your engineers can actually use.</p>
+      <ul class="service-list">
+        <li>OWASP Top 10 coverage</li>
+        <li>Authentication & authorization flows</li>
+        <li>Secrets handling & credential exposure</li>
+        <li>Input validation & injection risks</li>
+        <li>Written report with prioritized findings</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02 / 03</div>
+      <span class="service-icon">◈</span>
+      <h3 class="service-name">API Security Assessment</h3>
+      <p class="service-desc">APIs are your largest attack surface. We assess your endpoints, authentication mechanisms, data exposure, and access control models against real-world threat patterns.</p>
+      <ul class="service-list">
+        <li>Endpoint exposure & access control audit</li>
+        <li>Authentication & token security review</li>
+        <li>Rate limiting & abuse vector analysis</li>
+        <li>Sensitive data exposure in responses</li>
+        <li>Findings mapped to OWASP API Top 10</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03 / 03</div>
+      <span class="service-icon">◎</span>
+      <h3 class="service-name">AppSec Training for Dev Teams</h3>
+      <p class="service-desc">Security tools don't change behaviour. Education does. We run practical, codebase-relevant training sessions that give your engineers the mental models to write secure code by default.</p>
+      <ul class="service-list">
+        <li>Tailored to your stack & threat model</li>
+        <li>Secure coding patterns & anti-patterns</li>
+        <li>Live code walkthroughs</li>
+        <li>Secrets management best practices</li>
+        <li>Ongoing reference materials included</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section-dark" id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">Built by an engineer.<br>Not a consultant.</h2>
+      <div class="credential-list">
+        <div class="credential"><div class="credential-dot"></div><div class="credential-text">13+ years building distributed systems at scale</div></div>
+        <div class="credential"><div class="credential-dot"></div><div class="credential-text">Fintech & payments security — HSBC, Felix Payments, PayByPhone</div></div>
+        <div class="credential"><div class="credential-dot"></div><div class="credential-text">Secrets management, API security, authentication architecture</div></div>
+        <div class="credential"><div class="credential-dot"></div><div class="credential-text">60+ critical CVEs remediated across legacy production systems</div></div>
+        <div class="credential"><div class="credential-dot"></div><div class="credential-text">3M+ customers on secured financial systems</div></div>
+        <div class="credential"><div class="credential-dot"></div><div class="credential-text">Java, Kotlin, Node.js, C# — we speak your stack</div></div>
+      </div>
+    </div>
+    <div class="about-body">
+      <p><strong>Kariba Security Group was founded on a simple observation:</strong> most application security problems aren't mysterious. They're patterns. The same authentication misconfigurations, the same secrets in environment variables, the same over-permissive service accounts — showing up in codebase after codebase, in company after company.</p>
+      <p>The reason they persist isn't that engineers don't care. It's that <em>security expertise isn't evenly distributed</em> — and most growing teams don't have someone whose full-time job is thinking about how their systems get broken.</p>
+      <p>KSG's founder has spent 13 years building the kind of systems you're building — high-volume APIs, payment flows, microservices architectures, distributed systems under acquisition pressure. <strong>The work we do is informed by having written the code, not just reviewed it.</strong></p>
+      <p>We work with engineering leaders and CTOs at software companies and startups who know security is a gap — and want a practical partner to close it, not a compliance checkbox.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process">
+  <div class="section-label">How It Works</div>
+  <h2 class="section-title">From first conversation<br>to secured codebase.</h2>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-number">01</div>
+      <h3 class="step-title">Discovery Call</h3>
+      <p class="step-desc">30 minutes. We learn about your stack, your team, and where you feel most exposed. No sales pitch — just an honest conversation about fit.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">02</div>
+      <h3 class="step-title">Scoped Proposal</h3>
+      <p class="step-desc">We send a clear, fixed-scope proposal with deliverables, timeline, and pricing. No ambiguity about what you're getting.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">03</div>
+      <h3 class="step-title">Engagement</h3>
+      <p class="step-desc">We do the work. You get regular updates. We flag critical findings immediately — we don't wait for the final report to tell you something important.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-number">04</div>
+      <h3 class="step-title">Actionable Handoff</h3>
+      <p class="step-desc">A clear written report with prioritized findings, remediation guidance, and a debrief session so your team understands the why, not just the what.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-glow"></div>
+  <div class="section-label">Get Started</div>
+  <h2 class="section-title">Ready to find out<br>what's in your codebase?</h2>
+  <p class="section-body">Start with a free 30-minute discovery call. No commitment, no sales pressure — just an honest conversation about your security posture and whether we're the right fit.</p>
+  <div class="cta-buttons">
+    <a href="mailto:patience@karibasecurity.com" class="btn-primary">Book a discovery call →</a>
+    <a href="mailto:patience@karibasecurity.com" class="btn-secondary">Send us a message</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Kariba Security Group</div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://linkedin.com/in/patience-mpofu-77597579">LinkedIn</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Kariba Security Group. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
