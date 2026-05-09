@@ -1,0 +1,28 @@
+<svg width="340" height="56" viewBox="0 0 340 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="340" height="56" fill="#0A0A0A"/>
+  
+  <!-- Compact hexagon -->
+  <polygon points="22,4 38,4 46,18 38,32 22,32 14,18" fill="none" stroke="#C9974A" stroke-width="1.5"/>
+  <!-- K spine -->
+  <rect x="19" y="10" width="3" height="16" fill="#C9974A"/>
+  <!-- K upper arm -->
+  <polygon points="22,10 32,10 27,18 22,18" fill="#C9974A"/>
+  <!-- K lower arm -->
+  <polygon points="22,18 27,18 33,26 33,28 29,28 22,24" fill="#C9974A"/>
+  
+  <!-- Water lines -->
+  <line x1="10" y1="37" x2="50" y2="37" stroke="#C9974A" stroke-width="0.9" stroke-opacity="0.55"/>
+  <line x1="13" y1="41" x2="47" y2="41" stroke="#C9974A" stroke-width="0.6" stroke-opacity="0.3"/>
+
+  <!-- Wordmark -->
+  <text x="60" y="22" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="700" fill="#F5F2ED" letter-spacing="-0.3">KARIBA</text>
+  <text x="61" y="35" font-family="'Courier New', Courier, monospace" font-size="7.5" fill="#C9974A" letter-spacing="3.5">SECURITY GROUP</text>
+  
+  <!-- Vertical rule -->
+  <line x1="190" y1="10" x2="190" y2="44" stroke="rgba(201,151,74,0.3)" stroke-width="0.75"/>
+  
+  <!-- Right side tagline -->
+  <text x="202" y="22" font-family="'Courier New', Courier, monospace" font-size="7.5" fill="rgba(245,242,237,0.4)" letter-spacing="1.5">APPLICATION</text>
+  <text x="202" y="34" font-family="'Courier New', Courier, monospace" font-size="7.5" fill="rgba(245,242,237,0.4)" letter-spacing="1.5">SECURITY</text>
+</svg>

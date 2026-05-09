@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kariba Security Group — Logo</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0A0A0A;
+    font-family: 'DM Mono', monospace;
+    padding: 4rem 3rem;
+    color: #F5F2ED;
+  }
+  h2 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: #C9974A;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(201,151,74,0.2);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .logo-card {
+    border: 1px solid rgba(201,151,74,0.15);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    min-height: 280px;
+  }
+  .logo-card.dark { background: #0A0A0A; }
+  .logo-card.light { background: #F5F2ED; }
+  .logo-card.gold-bg { background: #C9974A; }
+  .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: #888;
+    text-transform: uppercase;
+    align-self: flex-start;
+  }
+  .logo-card.light .label { color: #AAA; }
+  .logo-card.gold-bg .label { color: rgba(10,10,10,0.5); }
+  .download-note {
+    margin-top: 3rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid rgba(201,151,74,0.2);
+    font-size: 0.72rem;
+    line-height: 1.8;
+    color: #888;
+    letter-spacing: 0.05em;
+  }
+  .download-note strong { color: #C9974A; }
+</style>
+</head>
+<body>
+
+<h2>Kariba Security Group — Logo System</h2>
+
+<div class="grid">
+
+  <!-- DARK BG - PRIMARY -->
+  <div class="logo-card dark">
+    <div class="label">Primary — Dark Background</div>
+    <svg width="280" height="90" viewBox="0 0 280 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- LOGOMARK: Stylized K built from dam/water geometry -->
+      <!-- Outer hexagon frame — precision/engineered -->
+      <polygon points="36,4 60,4 72,24 60,44 36,44 24,24" fill="none" stroke="#C9974A" stroke-width="1.5"/>
+      <!-- Inner geometric K -->
+      <!-- Vertical spine -->
+      <rect x="33" y="12" width="3" height="20" fill="#C9974A"/>
+      <!-- Upper diagonal -->
+      <polygon points="36,12 50,12 42,24 36,24" fill="#C9974A"/>
+      <!-- Lower diagonal -->
+      <polygon points="36,24 42,24 50,32 50,36 44,36 36,28" fill="#C9974A"/>
+      <!-- Water ripple lines beneath — Kariba Dam reference -->
+      <line x1="20" y1="50" x2="76" y2="50" stroke="#C9974A" stroke-width="0.75" stroke-opacity="0.6"/>
+      <line x1="24" y1="54" x2="72" y2="54" stroke="#C9974A" stroke-width="0.5" stroke-opacity="0.35"/>
+      <line x1="28" y1="58" x2="68" y2="58" stroke="#C9974A" stroke-width="0.35" stroke-opacity="0.2"/>
+
+      <!-- WORDMARK -->
+      <!-- KARIBA -->
+      <text x="90" y="28" font-family="'Playfair Display', serif" font-size="26" font-weight="700" fill="#F5F2ED" letter-spacing="-0.5">KARIBA</text>
+      <!-- SECURITY GROUP -->
+      <text x="91" y="44" font-family="'DM Mono', monospace" font-size="10.5" font-weight="400" fill="#C9974A" letter-spacing="4">SECURITY GROUP</text>
+      <!-- Divider line -->
+      <line x1="90" y1="50" x2="272" y2="50" stroke="rgba(201,151,74,0.3)" stroke-width="0.75"/>
+      <!-- Tagline -->
+      <text x="91" y="63" font-family="'DM Mono', monospace" font-size="7.5" fill="rgba(245,242,237,0.4)" letter-spacing="2">APPLICATION SECURITY</text>
+    </svg>
+  </div>
+
+  <!-- LIGHT BG -->
+  <div class="logo-card light">
+    <div class="label">Reversed — Light Background</div>
+    <svg width="280" height="90" viewBox="0 0 280 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="36,4 60,4 72,24 60,44 36,44 24,24" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
+      <rect x="33" y="12" width="3" height="20" fill="#1A1A1A"/>
+      <polygon points="36,12 50,12 42,24 36,24" fill="#1A1A1A"/>
+      <polygon points="36,24 42,24 50,32 50,36 44,36 36,28" fill="#1A1A1A"/>
+      <line x1="20" y1="50" x2="76" y2="50" stroke="#C9974A" stroke-width="0.75" stroke-opacity="0.8"/>
+      <line x1="24" y1="54" x2="72" y2="54" stroke="#C9974A" stroke-width="0.5" stroke-opacity="0.5"/>
+      <line x1="28" y1="58" x2="68" y2="58" stroke="#C9974A" stroke-width="0.35" stroke-opacity="0.3"/>
+      <text x="90" y="28" font-family="'Playfair Display', serif" font-size="26" font-weight="700" fill="#0A0A0A" letter-spacing="-0.5">KARIBA</text>
+      <text x="91" y="44" font-family="'DM Mono', monospace" font-size="10.5" font-weight="400" fill="#C9974A" letter-spacing="4">SECURITY GROUP</text>
+      <line x1="90" y1="50" x2="272" y2="50" stroke="rgba(201,151,74,0.4)" stroke-width="0.75"/>
+      <text x="91" y="63" font-family="'DM Mono', monospace" font-size="7.5" fill="rgba(10,10,10,0.4)" letter-spacing="2">APPLICATION SECURITY</text>
+    </svg>
+  </div>
+
+  <!-- ICON ONLY - DARK -->
+  <div class="logo-card dark">
+    <div class="label">Logomark Only — Icon Use</div>
+    <svg width="120" height="120" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Larger standalone mark -->
+      <polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/>
+      <!-- Inner hexagon -->
+      <polygon points="48,16 66,16 75,30 66,44 48,44 39,30" fill="none" stroke="rgba(201,151,74,0.25)" stroke-width="1"/>
+      <!-- K spine -->
+      <rect x="43" y="19" width="4" height="22" fill="#C9974A"/>
+      <!-- K upper arm -->
+      <polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/>
+      <!-- K lower arm -->
+      <polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/>
+      <!-- Water lines -->
+      <line x1="28" y1="62" x2="68" y2="62" stroke="#C9974A" stroke-width="1.5" stroke-opacity="0.7"/>
+      <line x1="32" y1="68" x2="64" y2="68" stroke="#C9974A" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="36" y1="74" x2="60" y2="74" stroke="#C9974A" stroke-width="0.75" stroke-opacity="0.2"/>
+    </svg>
+  </div>
+
+  <!-- GOLD BG -->
+  <div class="logo-card gold-bg">
+    <div class="label">Gold Background — Accent Use</div>
+    <svg width="280" height="90" viewBox="0 0 280 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="36,4 60,4 72,24 60,44 36,44 24,24" fill="none" stroke="#0A0A0A" stroke-width="1.5"/>
+      <rect x="33" y="12" width="3" height="20" fill="#0A0A0A"/>
+      <polygon points="36,12 50,12 42,24 36,24" fill="#0A0A0A"/>
+      <polygon points="36,24 42,24 50,32 50,36 44,36 36,28" fill="#0A0A0A"/>
+      <line x1="20" y1="50" x2="76" y2="50" stroke="rgba(10,10,10,0.4)" stroke-width="0.75"/>
+      <line x1="24" y1="54" x2="72" y2="54" stroke="rgba(10,10,10,0.25)" stroke-width="0.5"/>
+      <line x1="28" y1="58" x2="68" y2="58" stroke="rgba(10,10,10,0.15)" stroke-width="0.35"/>
+      <text x="90" y="28" font-family="'Playfair Display', serif" font-size="26" font-weight="700" fill="#0A0A0A" letter-spacing="-0.5">KARIBA</text>
+      <text x="91" y="44" font-family="'DM Mono', monospace" font-size="10.5" font-weight="400" fill="rgba(10,10,10,0.7)" letter-spacing="4">SECURITY GROUP</text>
+      <line x1="90" y1="50" x2="272" y2="50" stroke="rgba(10,10,10,0.2)" stroke-width="0.75"/>
+      <text x="91" y="63" font-family="'DM Mono', monospace" font-size="7.5" fill="rgba(10,10,10,0.45)" letter-spacing="2">APPLICATION SECURITY</text>
+    </svg>
+  </div>
+
+  <!-- HORIZONTAL COMPACT -->
+  <div class="logo-card dark" style="grid-column: span 2;">
+    <div class="label">Compact — Email Signature & Favicon Use</div>
+    <svg width="320" height="50" viewBox="0 0 320 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Compact hex mark -->
+      <polygon points="20,3 34,3 41,15 34,27 20,27 13,15" fill="none" stroke="#C9974A" stroke-width="1.25"/>
+      <rect x="18" y="8" width="2.5" height="14" fill="#C9974A"/>
+      <polygon points="20.5,8 30,8 25,15 20.5,15" fill="#C9974A"/>
+      <polygon points="20.5,15 25,15 31,22 31,25 27,25 20.5,21" fill="#C9974A"/>
+      <line x1="10" y1="31" x2="44" y2="31" stroke="#C9974A" stroke-width="0.75" stroke-opacity="0.5"/>
+      <line x1="13" y1="35" x2="41" y2="35" stroke="#C9974A" stroke-width="0.5" stroke-opacity="0.25"/>
+      <!-- Compact wordmark -->
+      <text x="56" y="20" font-family="'Playfair Display', serif" font-size="18" font-weight="700" fill="#F5F2ED" letter-spacing="-0.3">KARIBA</text>
+      <text x="57" y="33" font-family="'DM Mono', monospace" font-size="7.5" fill="#C9974A" letter-spacing="3.5">SECURITY GROUP</text>
+      <!-- Vertical rule -->
+      <line x1="196" y1="8" x2="196" y2="38" stroke="rgba(201,151,74,0.3)" stroke-width="0.75"/>
+      <!-- Tagline right -->
+      <text x="208" y="20" font-family="'DM Mono', monospace" font-size="7" fill="rgba(245,242,237,0.35)" letter-spacing="1.5">APPLICATION</text>
+      <text x="208" y="33" font-family="'DM Mono', monospace" font-size="7" fill="rgba(245,242,237,0.35)" letter-spacing="1.5">SECURITY</text>
+    </svg>
+  </div>
+
+</div>
+
+<div class="download-note">
+  <strong>How to use this file:</strong><br>
+  Open in any browser → Right-click any logo → "Save image as" or use browser dev tools to export the SVG.<br>
+  For Framer: paste the SVG code directly into a custom code component.<br>
+  For Namecheap email signature: use the compact horizontal variant.<br>
+  For favicon: use the logomark-only version, export at 32×32px and 64×64px.<br><br>
+  <strong>Colours:</strong> Gold #C9974A · Dark #0A0A0A · Light #F5F2ED<br>
+  <strong>Fonts:</strong> Playfair Display (wordmark) · DM Mono (subtext) — both free on Google Fonts
+</div>
+
+</body>
+</html>
