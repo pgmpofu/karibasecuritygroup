@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kariba Security Group — Security Built Into the Way You Build</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   background: #0A0A0A;
   color: #F5F2ED;
@@ -48,12 +49,17 @@ nav {
   background: linear-gradient(to bottom, rgba(10,10,10,0.98) 0%, transparent 100%);
 }
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+.nav-logo-text {
   font-family: 'DM Mono', monospace;
   font-size: 0.8rem;
   letter-spacing: 0.3em;
   color: #C9974A;
   text-transform: uppercase;
-  text-decoration: none;
 }
 .nav-links {
   display: flex;
@@ -81,7 +87,6 @@ nav {
   position: relative;
   overflow: hidden;
 }
-
 .hero-grid {
   position: absolute;
   inset: 0;
@@ -93,7 +98,6 @@ nav {
   mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, black 20%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, black 20%, transparent 70%);
 }
-
 .hero-glow {
   position: absolute;
   top: -30%;
@@ -103,13 +107,11 @@ nav {
   background: radial-gradient(circle, rgba(201,151,74,0.05) 0%, transparent 65%);
   pointer-events: none;
 }
-
 .hero-content {
   position: relative;
   z-index: 2;
   padding-top: 5rem;
 }
-
 .hero-eyebrow {
   display: flex;
   align-items: center;
@@ -130,7 +132,6 @@ nav {
   background: #C9974A;
   flex-shrink: 0;
 }
-
 .hero-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(3.5rem, 5.5vw, 6rem);
@@ -144,7 +145,6 @@ nav {
   color: #C9974A;
   font-style: italic;
 }
-
 .hero-sub {
   font-size: 1.05rem;
   line-height: 1.75;
@@ -154,7 +154,6 @@ nav {
   font-weight: 300;
   animation: fadeUp 0.8s ease 0.4s both;
 }
-
 .hero-cta {
   display: inline-flex;
   align-items: center;
@@ -184,7 +183,6 @@ nav {
 .hero-cta:hover::before { transform: scaleX(1); }
 .hero-cta:hover { color: #0A0A0A; }
 .hero-cta span { position: relative; z-index: 1; }
-
 .hero-visual {
   position: relative;
   z-index: 2;
@@ -193,7 +191,6 @@ nav {
   align-items: center;
   padding-top: 5rem;
 }
-
 .cipher-block {
   font-family: 'DM Mono', monospace;
   font-size: 0.63rem;
@@ -246,7 +243,6 @@ nav {
   border-top: 1px solid rgba(201,151,74,0.12);
   border-bottom: 1px solid rgba(201,151,74,0.12);
 }
-
 .section-label {
   display: flex;
   align-items: center;
@@ -266,7 +262,6 @@ nav {
   background: #C9974A;
   flex-shrink: 0;
 }
-
 .section-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.8rem, 4.5vw, 4.5rem);
@@ -276,7 +271,6 @@ nav {
   margin-bottom: 1.5rem;
   color: #F5F2ED;
 }
-
 .section-body {
   font-size: 1rem;
   line-height: 1.85;
@@ -291,14 +285,12 @@ nav {
   gap: 7rem;
   align-items: center;
 }
-
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2px;
   margin-top: 1rem;
 }
-
 .stat-block {
   background: #1A1A1A;
   padding: 2.2rem;
@@ -309,7 +301,6 @@ nav {
   border-color: rgba(201,151,74,0.4);
   background: #1F1F1F;
 }
-
 .stat-number {
   font-family: 'Playfair Display', serif;
   font-size: 3.2rem;
@@ -318,7 +309,6 @@ nav {
   line-height: 1;
   margin-bottom: 0.6rem;
 }
-
 .stat-label {
   font-family: 'DM Mono', monospace;
   font-size: 0.68rem;
@@ -335,7 +325,6 @@ nav {
   gap: 2px;
   margin-top: 4rem;
 }
-
 .service-card {
   background: #111111;
   border: 1px solid rgba(201,151,74,0.15);
@@ -358,7 +347,6 @@ nav {
 }
 .service-card:hover { border-color: rgba(201,151,74,0.35); }
 .service-card:hover::after { transform: scaleX(1); }
-
 .service-num {
   font-family: 'DM Mono', monospace;
   font-size: 0.6rem;
@@ -367,14 +355,12 @@ nav {
   margin-bottom: 2rem;
   text-transform: uppercase;
 }
-
 .service-icon {
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
   display: block;
   line-height: 1;
 }
-
 .service-name {
   font-family: 'Playfair Display', serif;
   font-size: 1.7rem;
@@ -383,14 +369,12 @@ nav {
   margin-bottom: 1rem;
   color: #F5F2ED;
 }
-
 .service-desc {
   font-size: 0.88rem;
   line-height: 1.75;
   color: rgba(245,242,237,0.5);
   margin-bottom: 2rem;
 }
-
 .service-list {
   list-style: none;
   display: flex;
@@ -421,14 +405,12 @@ nav {
   gap: 8rem;
   align-items: start;
 }
-
 .credential-list {
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
-
 .credential {
   display: flex;
   align-items: center;
@@ -456,7 +438,6 @@ nav {
   letter-spacing: 0.04em;
   line-height: 1.4;
 }
-
 .about-body p {
   font-size: 1.05rem;
   line-height: 1.9;
@@ -473,7 +454,6 @@ nav {
   gap: 2px;
   margin-top: 4rem;
 }
-
 .process-step {
   padding: 2.5rem 2rem;
   border: 1px solid rgba(201,151,74,0.15);
@@ -483,7 +463,6 @@ nav {
   border-color: rgba(201,151,74,0.3);
   background: rgba(201,151,74,0.02);
 }
-
 .step-number {
   font-family: 'Playfair Display', serif;
   font-size: 5rem;
@@ -494,7 +473,6 @@ nav {
   transition: color 0.3s;
 }
 .process-step:hover .step-number { color: rgba(201,151,74,0.15); }
-
 .step-title {
   font-family: 'Playfair Display', serif;
   font-size: 1.25rem;
@@ -502,7 +480,6 @@ nav {
   color: #F5F2ED;
   margin-bottom: 0.75rem;
 }
-
 .step-desc {
   font-size: 0.85rem;
   line-height: 1.75;
@@ -530,14 +507,12 @@ nav {
 }
 .cta-section .section-label { justify-content: center; }
 .cta-section .section-body { margin: 0 auto 3rem; text-align: center; }
-
 .cta-buttons {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
 }
-
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -554,7 +529,6 @@ nav {
   transition: background 0.3s, transform 0.2s;
 }
 .btn-primary:hover { background: #E8C080; transform: translateY(-1px); }
-
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -584,6 +558,9 @@ footer {
   align-items: center;
 }
 .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: 'DM Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.2em;
@@ -625,7 +602,6 @@ footer {
   footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
   .cta-section { padding: 6rem 2.5rem; }
 }
-
 @media (max-width: 600px) {
   nav { padding: 1.2rem 1.5rem; }
   .nav-links { display: none; }
@@ -640,7 +616,19 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">KSG</a>
+  <a href="#" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/>
+      <polygon points="48,16 66,16 75,30 66,44 48,44 39,30" fill="none" stroke="rgba(201,151,74,0.25)" stroke-width="1"/>
+      <rect x="43" y="19" width="4" height="22" fill="#C9974A"/>
+      <polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/>
+      <polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/>
+      <line x1="28" y1="62" x2="68" y2="62" stroke="#C9974A" stroke-width="1.5" stroke-opacity="0.7"/>
+      <line x1="32" y1="68" x2="64" y2="68" stroke="#C9974A" stroke-width="1" stroke-opacity="0.4"/>
+      <line x1="36" y1="74" x2="60" y2="74" stroke="#C9974A" stroke-width="0.75" stroke-opacity="0.2"/>
+    </svg>
+    <span class="nav-logo-text">KSG</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
@@ -653,7 +641,6 @@ footer {
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-
   <div class="hero-content">
     <div class="hero-eyebrow">Application Security Consulting</div>
     <h1 class="hero-title">
@@ -669,27 +656,26 @@ footer {
       <span>→</span>
     </a>
   </div>
-
   <div class="hero-visual">
     <div class="cipher-block">
-POST /api/v2/auth/token HTTP/1.1<br>
-Authorization: Bearer <span class="cipher-hi">••••••••••••</span><br>
-Content-Type: application/json<br>
-<br>
-{<br>
-&nbsp;&nbsp;"grant_type": "client_credentials",<br>
-&nbsp;&nbsp;"scope": <span class="cipher-hi">"payments:write"</span>,<br>
-&nbsp;&nbsp;"client_id": "svc-payments-prod"<br>
-}<br>
-<br>
-HTTP/1.1 <span class="cipher-hi">200 OK</span><br>
-X-RateLimit-Remaining: 847<br>
-Strict-Transport-Security: max-age=31536000<br>
-<br>
-<span class="cipher-hi">// Secrets rotation ......... complete</span><br>
-<span class="cipher-hi">// CVEs resolved .............. 60/60</span><br>
-<span class="cipher-hi">// PII exposure ......... eliminated</span><br>
-<span class="cipher-hi">// Production ................. secured</span>
+      POST /api/v2/auth/token HTTP/1.1<br>
+      Authorization: Bearer <span class="cipher-hi">••••••••••••</span><br>
+      Content-Type: application/json<br>
+      <br>
+      {<br>
+      &nbsp;&nbsp;"grant_type": "client_credentials",<br>
+      &nbsp;&nbsp;"scope": <span class="cipher-hi">"payments:write"</span>,<br>
+      &nbsp;&nbsp;"client_id": "svc-payments-prod"<br>
+      }<br>
+      <br>
+      HTTP/1.1 <span class="cipher-hi">200 OK</span><br>
+      X-RateLimit-Remaining: 847<br>
+      Strict-Transport-Security: max-age=31536000<br>
+      <br>
+      <span class="cipher-hi">// Secrets rotation ......... complete</span><br>
+      <span class="cipher-hi">// CVEs resolved .............. 60/60</span><br>
+      <span class="cipher-hi">// PII exposure ......... eliminated</span><br>
+      <span class="cipher-hi">// Production ................. secured</span>
     </div>
   </div>
 </section>
@@ -753,7 +739,6 @@ Strict-Transport-Security: max-age=31536000<br>
 <section class="section" id="services">
   <div class="section-label">What We Do</div>
   <h2 class="section-title">Three ways we work<br>with engineering teams.</h2>
-
   <div class="services-grid">
     <div class="service-card">
       <div class="service-num">01 / 03</div>
@@ -768,7 +753,6 @@ Strict-Transport-Security: max-age=31536000<br>
         <li>Written report with prioritized findings</li>
       </ul>
     </div>
-
     <div class="service-card">
       <div class="service-num">02 / 03</div>
       <span class="service-icon">◈</span>
@@ -782,7 +766,6 @@ Strict-Transport-Security: max-age=31536000<br>
         <li>Findings mapped to OWASP API Top 10</li>
       </ul>
     </div>
-
     <div class="service-card">
       <div class="service-num">03 / 03</div>
       <span class="service-icon">◎</span>
@@ -865,7 +848,16 @@ Strict-Transport-Security: max-age=31536000<br>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Kariba Security Group</div>
+  <div class="footer-logo">
+    <svg width="24" height="24" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/>
+      <rect x="43" y="19" width="4" height="22" fill="#C9974A"/>
+      <polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/>
+      <polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/>
+      <line x1="28" y1="62" x2="68" y2="62" stroke="#C9974A" stroke-width="1.5" stroke-opacity="0.6"/>
+    </svg>
+    Kariba Security Group
+  </div>
   <ul class="footer-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
