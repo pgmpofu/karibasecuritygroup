@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fake AI Reseller Trap: How Criminals Are Stealing Credentials Through Discounted AI Offers — Kariba Security Group</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#0A0A0A;color:#F5F2ED;font-family:'DM Sans',sans-serif;font-weight:300}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 4rem;background:rgba(10,10,10,0.98);border-bottom:1px solid rgba(201,151,74,0.1)}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.3em;color:#C9974A;text-transform:uppercase}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;color:rgba(245,242,237,0.45);text-decoration:none;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:#C9974A}
+.wrap{max-width:780px;margin:0 auto;padding:9rem 2rem 6rem}
+.back{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;color:rgba(245,242,237,0.35);text-decoration:none;text-transform:uppercase;margin-bottom:3rem;transition:color 0.3s}
+.back:hover{color:#C9974A}
+.adv-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,151,74,0.15)}
+.meta-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.adv-id{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;color:#C9974A;text-transform:uppercase}
+.badge{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.6rem;border:1px solid}
+.sev-high{color:#E57373;border-color:rgba(229,115,115,0.4)}
+.sev-critical{color:#EF5350;border-color:rgba(239,83,80,0.5);background:rgba(239,83,80,0.05)}
+.badge-aud{color:rgba(245,242,237,0.4);border-color:rgba(245,242,237,0.15)}
+.adv-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;color:#F5F2ED;margin-bottom:1rem}
+.byline{display:flex;gap:2rem;flex-wrap:wrap}
+.byline-item{font-family:'DM Mono',monospace;font-size:0.68rem;color:rgba(245,242,237,0.35);letter-spacing:0.05em}
+.byline-item span{color:rgba(245,242,237,0.6)}
+.body h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#F5F2ED;margin:3rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(201,151,74,0.2)}
+.body h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:#C9974A;margin:2rem 0 0.75rem}
+.body p{font-size:0.98rem;color:rgba(245,242,237,0.7);margin-bottom:1.25rem;max-width:68ch;line-height:1.8}
+.body ul,.body ol{margin:1rem 0 1.5rem 1.5rem}
+.body li{font-size:0.95rem;color:rgba(245,242,237,0.65);margin-bottom:0.5rem;line-height:1.7}
+.body strong{color:#F5F2ED;font-weight:500}
+.body pre{background:#111;border:1px solid rgba(201,151,74,0.2);border-left:3px solid #C9974A;padding:1.25rem 1.5rem;margin:1.5rem 0;overflow-x:auto}
+.body code{font-family:'DM Mono',monospace;font-size:0.82rem;color:#C9974A;line-height:1.7}
+.body p code,.body li code{background:rgba(201,151,74,0.1);padding:0.1em 0.4em;color:#C9974A;font-size:0.85em}
+.callout{background:#111;border-left:3px solid #C9974A;padding:1.25rem 1.5rem;margin:1.5rem 0}
+.callout p{margin:0;font-size:0.92rem}
+.checklist{background:#111;border:1px solid rgba(201,151,74,0.15);padding:2rem;margin:2rem 0}
+.checklist h3{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;color:#C9974A;text-transform:uppercase;margin:0 0 1rem}
+.checklist ul{list-style:none;margin:0 0 1.5rem;padding:0}
+.checklist ul:last-child{margin-bottom:0}
+.checklist li{font-family:'DM Mono',monospace;font-size:0.78rem;color:rgba(245,242,237,0.6);padding:0.4rem 0 0.4rem 1.5rem;position:relative;border-bottom:1px solid rgba(201,151,74,0.06);line-height:1.5}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'☐';position:absolute;left:0;color:rgba(201,151,74,0.5)}
+.adv-footer{margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(201,151,74,0.15)}
+.adv-footer p{font-size:0.85rem;color:rgba(245,242,237,0.4);line-height:1.7;margin-bottom:0.75rem}
+.adv-footer a{color:#C9974A;text-decoration:none}
+.share-line{font-family:'DM Mono',monospace;font-size:0.68rem;color:rgba(245,242,237,0.2);margin-top:1.5rem}
+footer{padding:2.5rem 4rem;border-top:1px solid rgba(201,151,74,0.12);display:flex;justify-content:space-between;align-items:center;margin-top:4rem}
+.footer-logo{display:flex;align-items:center;gap:0.75rem;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.2em;color:#C9974A;text-transform:uppercase}
+.footer-copy{font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(245,242,237,0.25)}
+@media(max-width:768px){nav{padding:1.2rem 1.5rem}.nav-links{display:none}.wrap{padding:7rem 1.5rem 4rem}footer{flex-direction:column;gap:1rem;padding:2rem 1.5rem;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 96 96" fill="none"><polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/><rect x="43" y="19" width="4" height="22" fill="#C9974A"/><polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/><polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/></svg>
+    <span class="nav-logo-text">KSG</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#services">Services</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#process">Process</a></li>
+    <li><a href="index.html">Advisories</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+<article class="wrap">
+  <a href="index.html" class="back">← All advisories</a>
+  <header class="adv-header">
+    <div class="meta-row">
+      <span class="adv-id">KSG-ADV-2026-002</span>
+      <span class="badge sev-high">Severity: High</span>
+      <span class="badge badge-aud">Audience: SMB</span>
+    </div>
+    <h1 class="adv-title">The Fake AI Reseller Trap: How Criminals Are Stealing Credentials Through Discounted AI Offers</h1>
+    <div class="byline">
+      <div class="byline-item">Issued by <span>Kariba Security Group</span></div>
+      <div class="byline-item">Date <span>September 2026</span></div>
+      <div class="byline-item">Threat ref <span>GTG-50021</span></div>
+    </div>
+  </header>
+  <div class="body">
+    <h2>Executive Summary</h2>
+    <p>Kariba Security Group is warning small businesses about a documented criminal operation that poses as a legitimate AI reseller offering discounted access to services like Claude. When businesses sign up, their traffic is silently routed to a different AI model while credential harvesting software steals their account credentials and sells them to other criminal groups.</p>
+    <p>Anthropic's September 2026 threat intelligence report documents this operation specifically, tracked as GTG-50021. Customers believed they were getting discounted AI access. In reality, a credential harvester was stealing their authentication tokens and selling them onward to actors who used them to run attacks — at the victim's expense.</p>
+
+    <h2>How the Attack Works</h2>
+    <h3>Step 1: The offer looks real</h3>
+    <p>The criminal group sets up a professional-looking website offering discounted access to Claude or other frontier AI models — perhaps 40–60% below the official rate. The website uses real branding, appears professional, and may rank in search results for queries like "cheap Claude API" or "discounted AI access."</p>
+    <h3>Step 2: You provide your credentials</h3>
+    <p>To "activate" the discounted access, you're asked to provide your existing Anthropic credentials, or to create an account on their platform. Either way, your authentication information is now in the attacker's hands.</p>
+    <h3>Step 3: You get responses — from a different model</h3>
+    <p>The service works. You send prompts, you get responses. What you don't know is that you're not talking to Claude — you're talking to a cheaper or open-source model that the attacker is using to proxy your requests, while your real credentials are being used elsewhere for their operations.</p>
+    <h3>Step 4: Your credentials are sold</h3>
+    <p>Your stolen credentials are sold on Telegram channels and underground marketplaces to other criminal groups who use them to run cyberattacks, process stolen data, or conduct reconnaissance — all billed to your account.</p>
+
+    <h2>Warning Signs</h2>
+    <ul>
+      <li>The service is significantly cheaper than the official provider rate</li>
+      <li>The service asks for your existing API key or account credentials to get started</li>
+      <li>Response style, capabilities, or limitations feel inconsistent with the model you paid for</li>
+      <li>The company has no verifiable corporate registration, physical address, or independent reviews</li>
+      <li>Unexpected charges appear on your AI account after signing up</li>
+    </ul>
+
+    <h2>How to Protect Yourself</h2>
+    <h3>Buy directly from the provider</h3>
+    <p>The most reliable way to know you are getting genuine Claude access is to purchase directly from Anthropic at anthropic.com. If you are considering a third-party reseller or integration, check Anthropic's official website for any published information about authorised partners before proceeding.</p>
+    <h3>Never provide your credentials to a third-party service</h3>
+    <p>If a service requires you to provide your Anthropic API key or login credentials to use it, you are giving that service the ability to impersonate you. This should require exceptional trust and verification before proceeding.</p>
+    <h3>Be sceptical of significant discounts</h3>
+    <p>Frontier AI models have genuine cost structures driven by the computing resources required to run them. Discounts substantially below market rate should prompt the question: how is this possible? A legitimate provider can answer that question clearly.</p>
+    <h3>Look for independent verification</h3>
+    <p>Legitimate businesses have verifiable histories, real customer reviews on independent platforms, and traceable corporate registration. A professional-looking website alone is not verification.</p>
+
+    <h2>If You've Used a Suspicious Reseller</h2>
+    <ol>
+      <li><strong>Revoke all API keys immediately</strong> and create new ones following secure storage practices</li>
+      <li><strong>Change your Anthropic account password</strong> and enable two-factor authentication</li>
+      <li><strong>Review your account usage logs</strong> for the past 30–90 days for activity you didn't initiate</li>
+      <li><strong>Contact Anthropic support</strong> at support.anthropic.com and report what occurred</li>
+      <li><strong>Check your payment method</strong> for unexpected charges and dispute them with documentation</li>
+    </ol>
+
+    <div class="checklist">
+      <h3>Checklist</h3>
+      <ul>
+        <li>Purchase AI access directly from official providers only</li>
+        <li>Never provide existing credentials to activate a third-party AI service</li>
+        <li>Verify any reseller through independent sources before using</li>
+        <li>Set up usage alerts to detect unauthorised account activity</li>
+        <li>Rotate API keys immediately if you suspect credential compromise</li>
+      </ul>
+    </div>
+  </div>
+  <footer class="adv-footer">
+    <p>This advisory was produced by Kariba Security Group (KSG) based on threat intelligence from Anthropic's September 2026 report <em>Detecting and Countering Misuse of AI</em> and our own analysis. KSG has no commercial relationship with any vendor mentioned and receives no compensation for any mention.</p>
+    <p>KSG provides application security consulting for businesses navigating the security challenges of AI adoption. Contact us at <a href="https://karibasecuritygroup.com">karibasecuritygroup.com</a> or <a href="mailto:patience@karibasecurity.com">patience@karibasecurity.com</a>.</p>
+    <p class="share-line">This advisory may be freely shared and redistributed with attribution to Kariba Security Group.</p>
+  </footer>
+</article>
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 96 96" fill="none"><polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/><rect x="43" y="19" width="4" height="22" fill="#C9974A"/><polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/><polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/></svg>
+    Kariba Security Group
+  </div>
+  <div class="footer-copy">© 2026 Kariba Security Group. All rights reserved.</div>
+</footer>
+</body>
+</html>

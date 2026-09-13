@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Didn't Do Anything Wrong — But Your Account Was Used to Attack Political Organisations — Kariba Security Group</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#0A0A0A;color:#F5F2ED;font-family:'DM Sans',sans-serif;font-weight:300}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 4rem;background:rgba(10,10,10,0.98);border-bottom:1px solid rgba(201,151,74,0.1)}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.3em;color:#C9974A;text-transform:uppercase}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;color:rgba(245,242,237,0.45);text-decoration:none;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:#C9974A}
+.wrap{max-width:780px;margin:0 auto;padding:9rem 2rem 6rem}
+.back{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;color:rgba(245,242,237,0.35);text-decoration:none;text-transform:uppercase;margin-bottom:3rem;transition:color 0.3s}
+.back:hover{color:#C9974A}
+.adv-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,151,74,0.15)}
+.meta-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.adv-id{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;color:#C9974A;text-transform:uppercase}
+.badge{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.6rem;border:1px solid}
+.sev-high{color:#E57373;border-color:rgba(229,115,115,0.4)}
+.sev-critical{color:#EF5350;border-color:rgba(239,83,80,0.5);background:rgba(239,83,80,0.05)}
+.badge-aud{color:rgba(245,242,237,0.4);border-color:rgba(245,242,237,0.15)}
+.adv-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;color:#F5F2ED;margin-bottom:1rem}
+.byline{display:flex;gap:2rem;flex-wrap:wrap}
+.byline-item{font-family:'DM Mono',monospace;font-size:0.68rem;color:rgba(245,242,237,0.35);letter-spacing:0.05em}
+.byline-item span{color:rgba(245,242,237,0.6)}
+.body h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#F5F2ED;margin:3rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(201,151,74,0.2)}
+.body h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:#C9974A;margin:2rem 0 0.75rem}
+.body p{font-size:0.98rem;color:rgba(245,242,237,0.7);margin-bottom:1.25rem;max-width:68ch;line-height:1.8}
+.body ul,.body ol{margin:1rem 0 1.5rem 1.5rem}
+.body li{font-size:0.95rem;color:rgba(245,242,237,0.65);margin-bottom:0.5rem;line-height:1.7}
+.body strong{color:#F5F2ED;font-weight:500}
+.body pre{background:#111;border:1px solid rgba(201,151,74,0.2);border-left:3px solid #C9974A;padding:1.25rem 1.5rem;margin:1.5rem 0;overflow-x:auto}
+.body code{font-family:'DM Mono',monospace;font-size:0.82rem;color:#C9974A;line-height:1.7}
+.body p code,.body li code{background:rgba(201,151,74,0.1);padding:0.1em 0.4em;color:#C9974A;font-size:0.85em}
+.callout{background:#111;border-left:3px solid #C9974A;padding:1.25rem 1.5rem;margin:1.5rem 0}
+.callout p{margin:0;font-size:0.92rem}
+.checklist{background:#111;border:1px solid rgba(201,151,74,0.15);padding:2rem;margin:2rem 0}
+.checklist h3{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;color:#C9974A;text-transform:uppercase;margin:0 0 1rem}
+.checklist ul{list-style:none;margin:0 0 1.5rem;padding:0}
+.checklist ul:last-child{margin-bottom:0}
+.checklist li{font-family:'DM Mono',monospace;font-size:0.78rem;color:rgba(245,242,237,0.6);padding:0.4rem 0 0.4rem 1.5rem;position:relative;border-bottom:1px solid rgba(201,151,74,0.06);line-height:1.5}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'☐';position:absolute;left:0;color:rgba(201,151,74,0.5)}
+.adv-footer{margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(201,151,74,0.15)}
+.adv-footer p{font-size:0.85rem;color:rgba(245,242,237,0.4);line-height:1.7;margin-bottom:0.75rem}
+.adv-footer a{color:#C9974A;text-decoration:none}
+.share-line{font-family:'DM Mono',monospace;font-size:0.68rem;color:rgba(245,242,237,0.2);margin-top:1.5rem}
+footer{padding:2.5rem 4rem;border-top:1px solid rgba(201,151,74,0.12);display:flex;justify-content:space-between;align-items:center;margin-top:4rem}
+.footer-logo{display:flex;align-items:center;gap:0.75rem;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.2em;color:#C9974A;text-transform:uppercase}
+.footer-copy{font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(245,242,237,0.25)}
+@media(max-width:768px){nav{padding:1.2rem 1.5rem}.nav-links{display:none}.wrap{padding:7rem 1.5rem 4rem}footer{flex-direction:column;gap:1rem;padding:2rem 1.5rem;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 96 96" fill="none"><polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/><rect x="43" y="19" width="4" height="22" fill="#C9974A"/><polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/><polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/></svg>
+    <span class="nav-logo-text">KSG</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#services">Services</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#process">Process</a></li>
+    <li><a href="index.html">Advisories</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+<article class="wrap">
+  <a href="index.html" class="back">← All advisories</a>
+  <header class="adv-header">
+    <div class="meta-row">
+      <span class="adv-id">KSG-ADV-2026-004</span>
+      <span class="badge sev-high">Severity: High</span>
+      <span class="badge badge-aud">Audience: SMB</span>
+    </div>
+    <h1 class="adv-title">You Didn't Do Anything Wrong — But Your Account Was Used to Attack Political Organisations</h1>
+    <div class="byline">
+      <div class="byline-item">Issued by <span>Kariba Security Group</span></div>
+      <div class="byline-item">Date <span>September 2026</span></div>
+      <div class="byline-item">Threat ref <span>GTG-50029</span></div>
+    </div>
+  </header>
+  <div class="body">
+    <h2>Executive Summary</h2>
+    <p>Kariba Security Group is issuing this advisory about a threat that is particularly alarming for small businesses: having your AI account used to conduct attacks against political parties, media organisations, and civil society groups — without your knowledge or involvement.</p>
+    <p>Anthropic's September 2026 threat intelligence report documents a hacktivist campaign (GTG-50029) in which a single actor built a custom tool to scan public sources for exposed API keys, validated the stolen keys, and then used those keys as the computing infrastructure for their attacks. The actor ran their entire month-long campaign on stolen API keys. Your business did nothing wrong and had no connection to the targets — but if your key was stolen, your account became the platform for attacks against organisations you've never heard of.</p>
+
+    <h2>Why This Matters Beyond the Obvious</h2>
+    <p>The immediate concern is account suspension and unexpected charges — both serious for a small business. But the less obvious risks are significant:</p>
+    <h3>Your account appears in the attacker's activity log</h3>
+    <p>Law enforcement investigations into hacktivist campaigns follow the digital trail. That trail may lead to your API account before investigators determine it was compromised — not controlled by you. This creates a period of unwanted scrutiny that can be disruptive and distressing even when you're cleared quickly.</p>
+    <h3>Account suspension disrupting your operations</h3>
+    <p>If your account is flagged for misuse, you may lose access to AI services your business depends on. For a business that has built AI into its daily workflow, losing that access without warning can halt operations for days or weeks while the account is investigated and restored.</p>
+    <h3>Reputational questions</h3>
+    <p>If your credentials are used in a politically motivated attack and that association becomes public before the compromise is established, the reputational impact can be significant — particularly for businesses that serve clients who would be sensitive to that association.</p>
+
+    <h2>How the Campaign Worked</h2>
+    <p>The GTG-50029 actor built an automated pipeline that:</p>
+    <ol>
+      <li>Continuously scanned public sources — GitHub repositories, paste sites, app binaries — for exposed API keys</li>
+      <li>Validated each discovered key to confirm it was active and determine its access level</li>
+      <li>Deployed valid keys as rotating compute resources for the attack campaign</li>
+      <li>Cycled through keys as they were suspended or revoked, moving to the next available one</li>
+    </ol>
+    <p>The actor was able to sustain a month-long campaign without using their own infrastructure or incurring costs, because the stolen keys provided effectively unlimited compute funded by the victims.</p>
+
+    <h2>Immediate Actions if You Suspect Your Key Was Used This Way</h2>
+    <ol>
+      <li><strong>Revoke the compromised key immediately</strong> and create a new one following secure storage practices</li>
+      <li><strong>Review your usage logs</strong> for the period in question — document everything you find, particularly API calls with patterns inconsistent with your normal usage</li>
+      <li><strong>Contact Anthropic support</strong> through support.anthropic.com and report what you have found. Anthropic's threat intelligence team actively investigates this category of abuse, and information you provide may help them understand and disrupt the operation</li>
+      <li><strong>Preserve records</strong> — do not delete logs or account history. If you're contacted by law enforcement, having clear records of when your key was compromised and what usage occurred is essential</li>
+      <li><strong>Consult a lawyer</strong> before making public statements about the incident</li>
+    </ol>
+
+    <h2>Prevention</h2>
+    <p>The prevention measures for this threat are the same as for direct credential theft — because the initial compromise mechanism is identical. The GTG-50029 actor targeted keys that were already exposed in public sources. Keeping your keys out of those sources eliminates your exposure to this specific threat.</p>
+    <ul>
+      <li>Never hardcode API keys in source code, configuration files, or mobile app binaries</li>
+      <li>Use environment variables and a secrets manager to store keys</li>
+      <li>Audit your repository history for any previously exposed keys and revoke them</li>
+      <li>Set usage alerts so anomalous activity is flagged before significant charges accrue</li>
+      <li>Rotate keys every 90 days as standard practice</li>
+    </ul>
+
+    <div class="checklist">
+      <h3>If You Receive Unexpected Suspension or Law Enforcement Contact</h3>
+      <ul>
+        <li>Do not delete any account logs or records</li>
+        <li>Document when you first noticed unusual activity and what you observed</li>
+        <li>Contact Anthropic support immediately with your documentation</li>
+        <li>Consult a lawyer before making public statements</li>
+        <li>Preserve all communications related to the incident</li>
+      </ul>
+    </div>
+  </div>
+  <footer class="adv-footer">
+    <p>This advisory was produced by Kariba Security Group (KSG) based on threat intelligence from Anthropic's September 2026 report <em>Detecting and Countering Misuse of AI</em> and our own analysis. KSG has no commercial relationship with any vendor mentioned and receives no compensation for any mention.</p>
+    <p>KSG provides application security consulting for businesses navigating the security challenges of AI adoption. Contact us at <a href="https://karibasecuritygroup.com">karibasecuritygroup.com</a> or <a href="mailto:patience@karibasecurity.com">patience@karibasecurity.com</a>.</p>
+    <p class="share-line">This advisory may be freely shared and redistributed with attribution to Kariba Security Group.</p>
+  </footer>
+</article>
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 96 96" fill="none"><polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/><rect x="43" y="19" width="4" height="22" fill="#C9974A"/><polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/><polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/></svg>
+    Kariba Security Group
+  </div>
+  <div class="footer-copy">© 2026 Kariba Security Group. All rights reserved.</div>
+</footer>
+</body>
+</html>

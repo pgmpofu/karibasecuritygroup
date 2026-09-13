@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSG-ADV-2026-001: AI API Key Credential Theft — Kariba Security Group</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #0A0A0A;
+  color: #F5F2ED;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background: rgba(10,10,10,0.98);
+  border-bottom: 1px solid rgba(201,151,74,0.1);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+.nav-logo-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  color: #C9974A;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: rgba(245,242,237,0.45);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: #C9974A; }
+
+.advisory-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 9rem 2rem 6rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: rgba(245,242,237,0.35);
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+  transition: color 0.3s;
+}
+.back-link:hover { color: #C9974A; }
+
+.advisory-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(201,151,74,0.15);
+}
+
+.advisory-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.advisory-id {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: #C9974A;
+  text-transform: uppercase;
+}
+.badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid;
+}
+.badge-high { color: #E57373; border-color: rgba(229,115,115,0.4); }
+.badge-audience { color: rgba(245,242,237,0.4); border-color: rgba(245,242,237,0.15); }
+
+.advisory-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #F5F2ED;
+  margin-bottom: 1rem;
+}
+
+.advisory-byline {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.byline-item {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: rgba(245,242,237,0.35);
+  letter-spacing: 0.05em;
+}
+.byline-item span { color: rgba(245,242,237,0.6); }
+
+/* Article content */
+.advisory-body { line-height: 1.8; }
+
+.advisory-body h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #F5F2ED;
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(201,151,74,0.2);
+}
+.advisory-body h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #C9974A;
+  margin: 2rem 0 0.75rem;
+  letter-spacing: 0.02em;
+}
+.advisory-body p {
+  font-size: 0.98rem;
+  color: rgba(245,242,237,0.7);
+  margin-bottom: 1.25rem;
+  max-width: 68ch;
+}
+.advisory-body ul, .advisory-body ol {
+  margin: 1rem 0 1.5rem 1.5rem;
+}
+.advisory-body li {
+  font-size: 0.95rem;
+  color: rgba(245,242,237,0.65);
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+.advisory-body strong { color: #F5F2ED; font-weight: 500; }
+
+.advisory-body pre {
+  background: #111111;
+  border: 1px solid rgba(201,151,74,0.2);
+  border-left: 3px solid #C9974A;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border-radius: 0;
+}
+.advisory-body code {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  color: #C9974A;
+  line-height: 1.7;
+}
+.advisory-body p code, .advisory-body li code {
+  background: rgba(201,151,74,0.1);
+  padding: 0.1em 0.4em;
+  color: #C9974A;
+  font-size: 0.85em;
+}
+
+.callout {
+  background: #111111;
+  border-left: 3px solid #C9974A;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.callout p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: rgba(245,242,237,0.65);
+}
+.callout strong { color: #C9974A; }
+
+.checklist {
+  background: #111111;
+  border: 1px solid rgba(201,151,74,0.15);
+  padding: 2rem;
+  margin: 2rem 0;
+}
+.checklist h3 {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: #C9974A;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+.checklist ul {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+.checklist ul:last-child { margin-bottom: 0; }
+.checklist li {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: rgba(245,242,237,0.6);
+  padding: 0.4rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  border-bottom: 1px solid rgba(201,151,74,0.06);
+  line-height: 1.5;
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: rgba(201,151,74,0.5);
+}
+
+.advisory-footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201,151,74,0.15);
+}
+.advisory-footer p {
+  font-size: 0.85rem;
+  color: rgba(245,242,237,0.4);
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+.advisory-footer a { color: #C9974A; text-decoration: none; }
+.advisory-footer a:hover { text-decoration: underline; }
+.share-line {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: rgba(245,242,237,0.25);
+  margin-top: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+footer {
+  padding: 2.5rem 4rem;
+  border-top: 1px solid rgba(201,151,74,0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4rem;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #C9974A;
+  text-transform: uppercase;
+}
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(245,242,237,0.25);
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-links { display: none; }
+  .advisory-wrap { padding: 7rem 1.5rem 4rem; }
+  footer { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/>
+      <polygon points="48,16 66,16 75,30 66,44 48,44 39,30" fill="none" stroke="rgba(201,151,74,0.25)" stroke-width="1"/>
+      <rect x="43" y="19" width="4" height="22" fill="#C9974A"/>
+      <polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/>
+      <polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/>
+      <line x1="28" y1="62" x2="68" y2="62" stroke="#C9974A" stroke-width="1.5" stroke-opacity="0.7"/>
+      <line x1="32" y1="68" x2="64" y2="68" stroke="#C9974A" stroke-width="1" stroke-opacity="0.4"/>
+    </svg>
+    <span class="nav-logo-text">KSG</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#services">Services</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#process">Process</a></li>
+    <li><a href="index.html">Advisories</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<article class="advisory-wrap">
+
+  <a href="index.html" class="back-link">← All advisories</a>
+
+  <header class="advisory-header">
+    <div class="advisory-meta-row">
+      <span class="advisory-id">KSG-ADV-2026-001</span>
+      <span class="badge badge-high">Severity: High</span>
+      <span class="badge badge-audience">Audience: SMB</span>
+    </div>
+    <h1 class="advisory-title">Protecting Your AI API Keys: What Small Businesses Need to Know About Credential Theft</h1>
+    <div class="advisory-byline">
+      <div class="byline-item">Issued by <span>Kariba Security Group</span></div>
+      <div class="byline-item">Date <span>September 2026</span></div>
+      <div class="byline-item">Affects <span>Claude, OpenAI, and similar AI API users</span></div>
+    </div>
+  </header>
+
+  <div class="advisory-body">
+
+    <h2>Executive Summary</h2>
+    <p>Kariba Security Group is issuing this advisory in response to a significant and growing threat targeting businesses that use AI services. Organised criminal groups are systematically stealing AI API keys from small businesses, developers, and software vendors — then using those stolen credentials to run their own attack operations at the victim's expense.</p>
+    <p>A recent threat intelligence report published by Anthropic documents multiple criminal operations running this playbook at industrial scale, including one group that downloaded <strong>1.8 million Android applications</strong> specifically to scan them for exposed API keys. Once stolen, your credentials give attackers three things simultaneously: a bill charged to your account, a cover identity for their operations, and the computing power to run further attacks against other victims.</p>
+    <p>One small business owner affected by this type of theft was unable to work for two weeks while dealing with account suspension, unexpected charges, and the investigation required to regain access. The financial and operational impact on a small business can be severe.</p>
+
+    <h2>How the Attack Happens</h2>
+    <p>Understanding the attack helps you understand why the defensive steps below matter.</p>
+
+    <h3>Step 1: Attackers mine for exposed keys</h3>
+    <p>Criminal groups run automated pipelines that continuously scan publicly accessible locations for API keys. One documented operation downloaded 1.8 million Android app install files from multiple app stores and scanned every one for hardcoded credentials. The same groups scan:</p>
+    <ul>
+      <li>Public GitHub repositories and commit history</li>
+      <li>Docker container images</li>
+      <li>Mobile application install files (APKs and iOS apps)</li>
+      <li>Website source code</li>
+      <li>Paste sites (Pastebin and similar)</li>
+      <li>Publicly accessible configuration files</li>
+    </ul>
+    <p>Keys found in any of these locations are immediately tested to confirm they work, then either used directly or sold through Telegram channels and underground marketplaces.</p>
+
+    <h3>Step 2: Attackers validate what they've stolen</h3>
+    <p>Stolen keys don't go directly to use. They go through an automated validation pipeline that tests each key, confirms it works, checks what access level it has, and grades it for resale value. This happens within minutes. By the time you notice unusual activity, the key has likely already been sold or deployed.</p>
+
+    <h3>Step 3: Attackers use your account for their operations</h3>
+    <p>Documented uses from the Anthropic threat intelligence report include running automated cyberattack workflows against other targets, processing stolen data, developing and testing malware, and running large-scale reconnaissance operations. All of this activity is charged to your account and appears under your identity.</p>
+
+    <h3>Step 4: Attackers maintain access</h3>
+    <div class="callout"><p><strong>Important:</strong> Some criminal groups install credential harvesting software that continuously monitors for new sessions and API keys, automatically sending any new credentials to the attacker as they appear. Rotating your key after a breach may not be enough if the harvester is still running.</p></div>
+
+    <h2>Warning Signs</h2>
+    <p>Check these indicators immediately if you have any concern about your AI account:</p>
+    <ul>
+      <li><strong>Unexpected charges or usage spikes</strong> — especially outside your normal business hours</li>
+      <li><strong>API calls in patterns you don't recognise</strong> — different types of requests than your normal usage</li>
+      <li><strong>Account suspension or rate limit emails</strong> from your AI provider</li>
+      <li><strong>Your key suddenly stops working</strong> — the provider may have revoked it due to detected misuse</li>
+      <li><strong>Unexpectedly high charges</strong> on your payment method</li>
+    </ul>
+
+    <h2>Immediate Actions if You're Compromised</h2>
+    <ol>
+      <li><strong>Revoke all existing API keys immediately.</strong> Log into your Anthropic console at console.anthropic.com, go to API Keys, and delete any key that may have been exposed. Do this before anything else.</li>
+      <li><strong>Review your usage logs for the past 30 days.</strong> Note dates, times, and volume of API calls you didn't make. You'll need this for the incident report and any billing dispute.</li>
+      <li><strong>Contact your AI provider's support team.</strong> Report the suspected theft immediately. The earlier you report, the better your position for account recovery and potential billing adjustments.</li>
+      <li><strong>Check all devices that had access to the key.</strong> If you find signs of credential harvesting software, treat this as a full security incident.</li>
+      <li><strong>Create a new API key following secure storage practices</strong> (see below).</li>
+      <li><strong>Review what the attacker used your account for.</strong> If your account was used to conduct attacks against other organisations, consult with a security professional about potential liability.</li>
+    </ol>
+
+    <h2>Prevention</h2>
+
+    <h3>Never put API keys in your code</h3>
+    <p>This is the most common exposure vector and the most preventable.</p>
+    <pre><code># Wrong — key is visible to anyone who sees your code
+client = anthropic.Anthropic(api_key="sk-ant-api03-...")
+
+# Right — key lives in an environment variable
+import os
+client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))</code></pre>
+
+    <h3>Use a .env file and add it to .gitignore</h3>
+    <p>Store keys in a <code>.env</code> file for local development, then add it to your <code>.gitignore</code> so it can never be accidentally committed:</p>
+    <pre><code># .env file (never commit this)
+ANTHROPIC_API_KEY=sk-ant-api03-your-key-here
+
+# .gitignore entry
+.env
+*.env
+.env.local</code></pre>
+
+    <h3>Audit your repository history</h3>
+    <p>If you've ever had a key in your code — even briefly, even in a commit you later deleted — it may still be in your repository's history. Use <strong>GitGuardian</strong> (free tier available) or GitHub's built-in secret scanning to check every repository that handles API keys.</p>
+    <div class="callout"><p><strong>Critical:</strong> Deleting a file that contained a key does not remove it from git history. If a key appeared in any commit, revoke it immediately, regardless of whether you've removed it from current code.</p></div>
+
+    <h3>Rotate keys every 90 days</h3>
+    <p>Treat API keys like passwords: change them periodically even without a known compromise. Log into your console, create a new key, update your environment, and revoke the old one. This limits the exposure window if a key was quietly stolen.</p>
+
+    <h3>Use separate keys for separate purposes</h3>
+    <p>If you use AI APIs for multiple purposes — customer-facing features, internal tools, development testing — use separate API keys for each. This limits the blast radius if one key is compromised and makes anomalous activity easier to detect.</p>
+
+    <h3>Be cautious with third-party integrations</h3>
+    <p>Some business tools and plugins ask for your AI API key. Before providing one, verify the service's legitimacy and confirm how they protect your key. Create a dedicated key for that service so you can revoke it independently if needed.</p>
+    <div class="callout"><p><strong>Documented threat:</strong> A criminal operation documented in Anthropic's September 2026 threat intelligence report (GTG-50021) ran fraudulent "discounted AI access" services as a credential theft vector. Never provide your key to a service offering cheap AI access.</p></div>
+
+    <h3>Enable usage alerts</h3>
+    <p>Set a billing alert at 150% of your typical monthly usage. High enough to avoid false alarms, low enough to catch a theft quickly. Most AI providers offer this in their billing settings.</p>
+
+    <h2>For Developers: Additional Considerations</h2>
+    <ul>
+      <li><strong>Never embed keys in mobile apps.</strong> Any key inside a mobile app binary can be extracted with freely available tools in minutes. Route mobile API calls through your own backend.</li>
+      <li><strong>Never embed keys in client-side web code.</strong> Browser JavaScript is publicly readable. A key in client-side code is a public key.</li>
+      <li><strong>Audit your CI/CD pipeline.</strong> Ensure keys are stored as proper secrets, not as plain text in configuration files.</li>
+      <li><strong>Review Docker images before publishing.</strong> Keys should be provided as environment variables at runtime, never baked into the image during build.</li>
+    </ul>
+
+    <h2>For Non-Technical Business Owners</h2>
+    <p>If a developer manages your AI integrations, ask them these questions:</p>
+    <ul>
+      <li>"Where is our API key stored?" — the answer should not be "in the code" or "I'm not sure"</li>
+      <li>"Is the key in any of our GitHub or code repositories?" — the answer should be no</li>
+      <li>"Do we have usage alerts set up?" — the answer should be yes</li>
+      <li>"How often do we rotate the key?" — there should be a concrete answer</li>
+    </ul>
+    <p>If you can't get clear answers to these questions, contact Kariba Security Group for an AI credential security review.</p>
+
+    <h2>Summary Checklist</h2>
+    <div class="checklist">
+      <h3>Immediate</h3>
+      <ul>
+        <li>Review API usage in the last 30 days for anomalies</li>
+        <li>Confirm API key is not stored directly in code or configuration files</li>
+        <li>Confirm .env files are in .gitignore</li>
+        <li>Set up usage and billing alerts</li>
+      </ul>
+      <h3>This Week</h3>
+      <ul>
+        <li>Audit code repository history for exposed keys (GitGuardian or GitHub secret scanning)</li>
+        <li>Create separate keys for separate use cases</li>
+        <li>Review third-party services that hold your API key</li>
+      </ul>
+      <h3>Ongoing</h3>
+      <ul>
+        <li>Rotate API keys every 90 days</li>
+        <li>Review usage logs monthly</li>
+        <li>Train team members who handle API keys on secure storage practices</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="advisory-footer">
+    <p>This advisory was produced by Kariba Security Group (KSG) based on threat intelligence from Anthropic's September 2026 report <em>Detecting and Countering Misuse of AI</em> and our own analysis of small business risk exposure.</p>
+    <p>KSG provides application security consulting for small and medium-sized businesses navigating the security challenges of AI adoption. For a confidential security review or to report a suspected incident, contact us at <a href="https://karibasecuritygroup.com">karibasecuritygroup.com</a> or <a href="mailto:patience@karibasecurity.com">patience@karibasecurity.com</a>.</p>
+    <p class="share-line">This advisory may be freely shared and redistributed with attribution to Kariba Security Group.</p>
+  </footer>
+
+</article>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/>
+      <rect x="43" y="19" width="4" height="22" fill="#C9974A"/>
+      <polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/>
+      <polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/>
+    </svg>
+    Kariba Security Group
+  </div>
+  <div class="footer-copy">© 2026 Kariba Security Group. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

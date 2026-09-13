@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pay or We Publish: What Small Businesses Need to Know About Data Theft and Extortion — Kariba Security Group</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#0A0A0A;color:#F5F2ED;font-family:'DM Sans',sans-serif;font-weight:300}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 4rem;background:rgba(10,10,10,0.98);border-bottom:1px solid rgba(201,151,74,0.1)}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.3em;color:#C9974A;text-transform:uppercase}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;color:rgba(245,242,237,0.45);text-decoration:none;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:#C9974A}
+.wrap{max-width:780px;margin:0 auto;padding:9rem 2rem 6rem}
+.back{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;color:rgba(245,242,237,0.35);text-decoration:none;text-transform:uppercase;margin-bottom:3rem;transition:color 0.3s}
+.back:hover{color:#C9974A}
+.adv-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,151,74,0.15)}
+.meta-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.adv-id{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;color:#C9974A;text-transform:uppercase}
+.badge{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.6rem;border:1px solid}
+.sev-high{color:#E57373;border-color:rgba(229,115,115,0.4)}
+.sev-critical{color:#EF5350;border-color:rgba(239,83,80,0.5);background:rgba(239,83,80,0.05)}
+.badge-aud{color:rgba(245,242,237,0.4);border-color:rgba(245,242,237,0.15)}
+.adv-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;color:#F5F2ED;margin-bottom:1rem}
+.byline{display:flex;gap:2rem;flex-wrap:wrap}
+.byline-item{font-family:'DM Mono',monospace;font-size:0.68rem;color:rgba(245,242,237,0.35);letter-spacing:0.05em}
+.byline-item span{color:rgba(245,242,237,0.6)}
+.body h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#F5F2ED;margin:3rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(201,151,74,0.2)}
+.body h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:#C9974A;margin:2rem 0 0.75rem}
+.body p{font-size:0.98rem;color:rgba(245,242,237,0.7);margin-bottom:1.25rem;max-width:68ch;line-height:1.8}
+.body ul,.body ol{margin:1rem 0 1.5rem 1.5rem}
+.body li{font-size:0.95rem;color:rgba(245,242,237,0.65);margin-bottom:0.5rem;line-height:1.7}
+.body strong{color:#F5F2ED;font-weight:500}
+.body pre{background:#111;border:1px solid rgba(201,151,74,0.2);border-left:3px solid #C9974A;padding:1.25rem 1.5rem;margin:1.5rem 0;overflow-x:auto}
+.body code{font-family:'DM Mono',monospace;font-size:0.82rem;color:#C9974A;line-height:1.7}
+.body p code,.body li code{background:rgba(201,151,74,0.1);padding:0.1em 0.4em;color:#C9974A;font-size:0.85em}
+.callout{background:#111;border-left:3px solid #C9974A;padding:1.25rem 1.5rem;margin:1.5rem 0}
+.callout p{margin:0;font-size:0.92rem}
+.checklist{background:#111;border:1px solid rgba(201,151,74,0.15);padding:2rem;margin:2rem 0}
+.checklist h3{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;color:#C9974A;text-transform:uppercase;margin:0 0 1rem}
+.checklist ul{list-style:none;margin:0 0 1.5rem;padding:0}
+.checklist ul:last-child{margin-bottom:0}
+.checklist li{font-family:'DM Mono',monospace;font-size:0.78rem;color:rgba(245,242,237,0.6);padding:0.4rem 0 0.4rem 1.5rem;position:relative;border-bottom:1px solid rgba(201,151,74,0.06);line-height:1.5}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'☐';position:absolute;left:0;color:rgba(201,151,74,0.5)}
+.adv-footer{margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(201,151,74,0.15)}
+.adv-footer p{font-size:0.85rem;color:rgba(245,242,237,0.4);line-height:1.7;margin-bottom:0.75rem}
+.adv-footer a{color:#C9974A;text-decoration:none}
+.share-line{font-family:'DM Mono',monospace;font-size:0.68rem;color:rgba(245,242,237,0.2);margin-top:1.5rem}
+footer{padding:2.5rem 4rem;border-top:1px solid rgba(201,151,74,0.12);display:flex;justify-content:space-between;align-items:center;margin-top:4rem}
+.footer-logo{display:flex;align-items:center;gap:0.75rem;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.2em;color:#C9974A;text-transform:uppercase}
+.footer-copy{font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(245,242,237,0.25)}
+@media(max-width:768px){nav{padding:1.2rem 1.5rem}.nav-links{display:none}.wrap{padding:7rem 1.5rem 4rem}footer{flex-direction:column;gap:1rem;padding:2rem 1.5rem;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 96 96" fill="none"><polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/><rect x="43" y="19" width="4" height="22" fill="#C9974A"/><polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/><polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/></svg>
+    <span class="nav-logo-text">KSG</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#services">Services</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#process">Process</a></li>
+    <li><a href="index.html">Advisories</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+<article class="wrap">
+  <a href="index.html" class="back">← All advisories</a>
+  <header class="adv-header">
+    <div class="meta-row">
+      <span class="adv-id">KSG-ADV-2026-005</span>
+      <span class="badge sev-critical">Severity: Critical</span>
+      <span class="badge badge-aud">Audience: All businesses</span>
+    </div>
+    <h1 class="adv-title">Pay or We Publish: What Small Businesses Need to Know About Data Theft and Extortion</h1>
+    <div class="byline">
+      <div class="byline-item">Issued by <span>Kariba Security Group</span></div>
+      <div class="byline-item">Date <span>September 2026</span></div>
+      <div class="byline-item">Threat ref <span>GTG-50014</span></div>
+    </div>
+  </header>
+  <div class="body">
+    <h2>Executive Summary</h2>
+    <p>Kariba Security Group is issuing this advisory at Critical severity because the threat it describes has reached small businesses — a category that was previously considered too low-value to be worth the effort of sophisticated data theft and extortion operations.</p>
+    <p>That calculus has changed. AI has made data theft and extortion attacks faster, cheaper, and accessible to individual operators who previously lacked the skills and resources to conduct them. Small businesses are now viable targets.</p>
+    <p>Anthropic's September 2026 threat intelligence report documents multiple clusters of financially motivated cybercrime activity conducted by operators suspected to be affiliates of the ShinyHunters collective (tracked as GTG-50014), a group known for large-scale data theft operations followed by pay-or-leak extortion demands. Documented victims include a technology provider (over a terabyte of data exfiltrated, including hundreds of thousands of national identifiers and millions of payment card records), an airline (systems holding tens of millions of passenger records), and an energy company (where the operators claimed they could remotely control the charging current of customers' home EV chargers).</p>
+    <p>The tactics used in these large-scale attacks are the same tactics now being applied to smaller targets.</p>
+
+    <h2>The Complete Attack Lifecycle</h2>
+    <h3>Phase 1: Initial access</h3>
+    <p>Attackers gain entry to your systems through one of several common vectors:</p>
+    <ul>
+      <li><strong>Stolen credentials</strong> — purchased from underground marketplaces or obtained through phishing</li>
+      <li><strong>Vulnerable software</strong> — unpatched systems, outdated plugins, or software with known vulnerabilities</li>
+      <li><strong>Supply chain compromise</strong> — a vendor or SaaS platform you use is breached and attackers pivot to your data through that connection</li>
+      <li><strong>Compromised employee devices</strong> — malware on a laptop or phone that harvests credentials and provides access</li>
+    </ul>
+    <h3>Phase 2: Data discovery and exfiltration</h3>
+    <p>Once inside, attackers use AI-assisted tools to rapidly identify and extract the most valuable data: customer records, financial information, employee data, intellectual property, and internal communications. AI has dramatically accelerated this phase — what previously took weeks now takes hours.</p>
+    <h3>Phase 3: The demand</h3>
+    <p>You receive a message. It typically includes a sample of the stolen data as proof, a demand for payment (usually in cryptocurrency), a deadline, and a threat to publish the data publicly or sell it if you don't pay. The message is designed to create panic and pressure you into paying before you've had time to assess your options.</p>
+    <h3>Phase 4: The lever</h3>
+    <p>If you have customer data, the attacker's real leverage isn't against you — it's against your customers. The threat of notifying your customers that their data was stolen, or publishing their information publicly, puts your customer relationships and your PIPEDA breach notification obligations in direct conflict with the attacker's demands.</p>
+
+    <h2>Should You Pay?</h2>
+    <p>Kariba Security Group does not recommend paying extortion demands, for several reasons:</p>
+    <ul>
+      <li>Payment does not guarantee the data is deleted — attackers frequently sell or publish the data anyway</li>
+      <li>Payment identifies you as someone who will pay, potentially attracting further attacks</li>
+      <li>There is no enforceable contract — you have no recourse if the attacker doesn't honour the terms</li>
+      <li>Payment may have legal implications depending on the jurisdiction and the attacker's designation</li>
+    </ul>
+    <p>However, this is a business and legal decision that you should make with qualified legal counsel, not under time pressure created by the attacker. The deadline in an extortion demand is a tactic, not a constraint — engaging legal counsel immediately is always the right first step.</p>
+
+    <h2>If You Receive an Extortion Demand</h2>
+    <ol>
+      <li><strong>Do not respond to the attacker immediately.</strong> Engaging without counsel often escalates the demand and gives the attacker more information about your posture.</li>
+      <li><strong>Contact a lawyer immediately</strong> — specifically one with data breach experience. They will guide your response strategy and help you understand your PIPEDA notification obligations.</li>
+      <li><strong>Preserve all communications</strong> from the attacker, including the original message, any samples they provided, and all subsequent contact.</li>
+      <li><strong>Report to the Canadian Centre for Cyber Security</strong> — current reporting guidance is published at cyber.gc.ca.</li>
+      <li><strong>Investigate the breach</strong> to understand what was actually taken, when, and how. This determines your notification obligations and your response options.</li>
+      <li><strong>Contact your cyber insurance provider</strong> if you have coverage — extortion events are often covered, and your insurer may have incident response resources available to you.</li>
+    </ol>
+
+    <h2>Prevention: Reducing Your Exposure</h2>
+    <h3>Data minimisation</h3>
+    <p>You can't lose data you don't have. Regularly review what customer data you collect, how long you retain it, and whether you actually need it. Data that isn't stored can't be stolen.</p>
+    <h3>Access controls</h3>
+    <p>Limit who in your organisation can access sensitive customer data, and ensure that access is logged. A breach that exposes only the data accessible to a compromised account is significantly less severe than one that exposes everything.</p>
+    <h3>Multi-factor authentication</h3>
+    <p>Enable MFA on every system that holds sensitive data. Stolen passwords are the most common initial access vector — MFA makes them significantly less useful to attackers.</p>
+    <h3>Software updates</h3>
+    <p>Keep all software — operating systems, plugins, SaaS platforms, and any software your business runs — updated. Many successful breaches exploit known vulnerabilities that patches had already addressed.</p>
+    <h3>Cyber insurance</h3>
+    <p>Consider a cyber liability policy if you don't have one. For small businesses handling customer data, the cost of a policy is often significantly lower than the cost of a single incident response.</p>
+    <h3>Incident response plan</h3>
+    <p>Identify your incident response contacts before you need them. A lawyer who handles data breach matters, a technology professional who can investigate and contain a breach, and your insurance provider are the minimum. Knowing who to call at 11pm when you discover a breach is worth more than any technical control.</p>
+
+    <div class="checklist">
+      <h3>Prevention Checklist</h3>
+      <ul>
+        <li>Enable MFA on all systems holding customer or financial data</li>
+        <li>Review and minimise what customer data you collect and retain</li>
+        <li>Restrict and log access to sensitive data</li>
+        <li>Keep all software and plugins updated</li>
+        <li>Consider cyber liability insurance</li>
+        <li>Identify your incident response contacts before you need them</li>
+      </ul>
+      <h3>If You Receive a Demand</h3>
+      <ul>
+        <li>Do not respond to the attacker immediately</li>
+        <li>Contact a data breach lawyer first</li>
+        <li>Preserve all attacker communications</li>
+        <li>Report to the Canadian Centre for Cyber Security (cyber.gc.ca)</li>
+        <li>Contact your cyber insurance provider</li>
+        <li>Investigate the breach to understand your notification obligations</li>
+      </ul>
+    </div>
+  </div>
+  <footer class="adv-footer">
+    <p>This advisory was produced by Kariba Security Group (KSG) based on threat intelligence from Anthropic's September 2026 report <em>Detecting and Countering Misuse of AI</em> and our own analysis. KSG has no commercial relationship with any vendor mentioned and receives no compensation for any mention.</p>
+    <p>KSG provides application security consulting for businesses navigating the security challenges of AI adoption. Contact us at <a href="https://karibasecuritygroup.com">karibasecuritygroup.com</a> or <a href="mailto:patience@karibasecurity.com">patience@karibasecurity.com</a>.</p>
+    <p class="share-line">This advisory may be freely shared and redistributed with attribution to Kariba Security Group.</p>
+  </footer>
+</article>
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 96 96" fill="none"><polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/><rect x="43" y="19" width="4" height="22" fill="#C9974A"/><polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/><polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/></svg>
+    Kariba Security Group
+  </div>
+  <div class="footer-copy">© 2026 Kariba Security Group. All rights reserved.</div>
+</footer>
+</body>
+</html>

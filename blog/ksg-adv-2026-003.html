@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supply Chain Attacks on the AI Tools Your Business Uses — Kariba Security Group</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#0A0A0A;color:#F5F2ED;font-family:'DM Sans',sans-serif;font-weight:300}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.5rem 4rem;background:rgba(10,10,10,0.98);border-bottom:1px solid rgba(201,151,74,0.1)}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+.nav-logo-text{font-family:'DM Mono',monospace;font-size:0.8rem;letter-spacing:0.3em;color:#C9974A;text-transform:uppercase}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;color:rgba(245,242,237,0.45);text-decoration:none;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:#C9974A}
+.wrap{max-width:780px;margin:0 auto;padding:9rem 2rem 6rem}
+.back{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;color:rgba(245,242,237,0.35);text-decoration:none;text-transform:uppercase;margin-bottom:3rem;transition:color 0.3s}
+.back:hover{color:#C9974A}
+.adv-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(201,151,74,0.15)}
+.meta-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.adv-id{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;color:#C9974A;text-transform:uppercase}
+.badge{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.6rem;border:1px solid}
+.sev-high{color:#E57373;border-color:rgba(229,115,115,0.4)}
+.sev-critical{color:#EF5350;border-color:rgba(239,83,80,0.5);background:rgba(239,83,80,0.05)}
+.badge-aud{color:rgba(245,242,237,0.4);border-color:rgba(245,242,237,0.15)}
+.adv-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;color:#F5F2ED;margin-bottom:1rem}
+.byline{display:flex;gap:2rem;flex-wrap:wrap}
+.byline-item{font-family:'DM Mono',monospace;font-size:0.68rem;color:rgba(245,242,237,0.35);letter-spacing:0.05em}
+.byline-item span{color:rgba(245,242,237,0.6)}
+.body h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#F5F2ED;margin:3rem 0 1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(201,151,74,0.2)}
+.body h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:#C9974A;margin:2rem 0 0.75rem}
+.body p{font-size:0.98rem;color:rgba(245,242,237,0.7);margin-bottom:1.25rem;max-width:68ch;line-height:1.8}
+.body ul,.body ol{margin:1rem 0 1.5rem 1.5rem}
+.body li{font-size:0.95rem;color:rgba(245,242,237,0.65);margin-bottom:0.5rem;line-height:1.7}
+.body strong{color:#F5F2ED;font-weight:500}
+.body pre{background:#111;border:1px solid rgba(201,151,74,0.2);border-left:3px solid #C9974A;padding:1.25rem 1.5rem;margin:1.5rem 0;overflow-x:auto}
+.body code{font-family:'DM Mono',monospace;font-size:0.82rem;color:#C9974A;line-height:1.7}
+.body p code,.body li code{background:rgba(201,151,74,0.1);padding:0.1em 0.4em;color:#C9974A;font-size:0.85em}
+.callout{background:#111;border-left:3px solid #C9974A;padding:1.25rem 1.5rem;margin:1.5rem 0}
+.callout p{margin:0;font-size:0.92rem}
+.checklist{background:#111;border:1px solid rgba(201,151,74,0.15);padding:2rem;margin:2rem 0}
+.checklist h3{font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;color:#C9974A;text-transform:uppercase;margin:0 0 1rem}
+.checklist ul{list-style:none;margin:0 0 1.5rem;padding:0}
+.checklist ul:last-child{margin-bottom:0}
+.checklist li{font-family:'DM Mono',monospace;font-size:0.78rem;color:rgba(245,242,237,0.6);padding:0.4rem 0 0.4rem 1.5rem;position:relative;border-bottom:1px solid rgba(201,151,74,0.06);line-height:1.5}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'☐';position:absolute;left:0;color:rgba(201,151,74,0.5)}
+.adv-footer{margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(201,151,74,0.15)}
+.adv-footer p{font-size:0.85rem;color:rgba(245,242,237,0.4);line-height:1.7;margin-bottom:0.75rem}
+.adv-footer a{color:#C9974A;text-decoration:none}
+.share-line{font-family:'DM Mono',monospace;font-size:0.68rem;color:rgba(245,242,237,0.2);margin-top:1.5rem}
+footer{padding:2.5rem 4rem;border-top:1px solid rgba(201,151,74,0.12);display:flex;justify-content:space-between;align-items:center;margin-top:4rem}
+.footer-logo{display:flex;align-items:center;gap:0.75rem;font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.2em;color:#C9974A;text-transform:uppercase}
+.footer-copy{font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(245,242,237,0.25)}
+@media(max-width:768px){nav{padding:1.2rem 1.5rem}.nav-links{display:none}.wrap{padding:7rem 1.5rem 4rem}footer{flex-direction:column;gap:1rem;padding:2rem 1.5rem;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 96 96" fill="none"><polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/><rect x="43" y="19" width="4" height="22" fill="#C9974A"/><polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/><polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/></svg>
+    <span class="nav-logo-text">KSG</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#services">Services</a></li>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#process">Process</a></li>
+    <li><a href="index.html">Advisories</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+<article class="wrap">
+  <a href="index.html" class="back">← All advisories</a>
+  <header class="adv-header">
+    <div class="meta-row">
+      <span class="adv-id">KSG-ADV-2026-003</span>
+      <span class="badge sev-high">Severity: High</span>
+      <span class="badge badge-aud">Audience: SMB / Developers</span>
+    </div>
+    <h1 class="adv-title">Supply Chain Attacks on the AI Tools Your Business Uses</h1>
+    <div class="byline">
+      <div class="byline-item">Issued by <span>Kariba Security Group</span></div>
+      <div class="byline-item">Date <span>September 2026</span></div>
+      <div class="byline-item">Threat ref <span>GTG-50020</span></div>
+    </div>
+  </header>
+  <div class="body">
+    <h2>Executive Summary</h2>
+    <p>Kariba Security Group is issuing this advisory about an attack vector that most small businesses don't know exists: criminals targeting the AI tools and integration services your business relies on — not to attack you directly, but to steal the API keys those services hold on your behalf.</p>
+    <p>Anthropic's September 2026 threat intelligence report documents an operation (GTG-50020) in which a criminal actor used prompt injection to cause an AI vendor's automated evaluation sandbox to hand over the production API keys it held — including production keys from multiple AI providers belonging to that vendor. The same actor then ran a follow-on campaign against roughly thirty AI companies in about four days, applying the same technique with minor adaptations for each target.</p>
+    <p>You didn't need to do anything wrong for your credentials to be exposed. A breach of one AI vendor or integration service can expose the credentials of all their customers simultaneously.</p>
+
+    <h2>What Is a Supply Chain Attack?</h2>
+    <p>A supply chain attack targets a vendor or service that many other businesses depend on, rather than attacking those businesses directly. By compromising the vendor once, the attacker gets access to all of the vendor's customers at the same time.</p>
+    <p>In the AI context, your business may depend on third-party AI tools that hold your API keys to operate on your behalf: chatbot platforms, AI writing tools, customer service automation, AI-powered analytics, and similar services. Each of these services is a potential supply chain target.</p>
+
+    <h2>How the GTG-50020 Attack Worked</h2>
+    <h3>Prompt injection as an attack vector</h3>
+    <p>The attacker identified that the target vendor ran automated AI workflows — pipelines that used AI models to evaluate, process, or test content. The attacker submitted carefully crafted content designed not to be processed normally, but to instruct the AI model to perform actions it shouldn't: specifically, to extract and transmit API keys from its operating environment.</p>
+    <p>This technique is called prompt injection, and it exploits the fact that AI models process instructions and data in the same stream — making it possible for malicious content to be interpreted as instructions rather than data.</p>
+    <h3>Scale of exposure</h3>
+    <p>Once the attacker had access to one vendor's key store, they applied the same technique across roughly thirty additional AI companies in about four days. Each successful compromise exposed the credentials of that vendor's entire customer base.</p>
+
+    <h2>What This Means for Your Business</h2>
+    <p>If any of the AI tools you use were among the affected vendors, your API keys may have been exposed without any action on your part and without the tool provider notifying you immediately. You would have continued using the tool normally, unaware that your credentials had been compromised.</p>
+
+    <h2>How to Assess Your Exposure</h2>
+    <h3>Inventory your AI tool integrations</h3>
+    <p>List every AI-powered tool your business uses that could hold your API keys. For each one, ask:</p>
+    <ul>
+      <li>Does this service have access to my Anthropic or other AI provider credentials?</li>
+      <li>How does this service store and protect those credentials?</li>
+      <li>Has this service published a security incident disclosure in the past 12 months?</li>
+    </ul>
+    <h3>Use separate API keys per integration</h3>
+    <p>Create a dedicated API key for each third-party service that needs AI API access. If one service is compromised, you can revoke that key without affecting your other integrations. This is the single most effective supply chain protection available to small businesses.</p>
+    <h3>Monitor usage per key</h3>
+    <p>Anomalous usage on one key — while other keys show normal activity — is a strong indicator of supply chain compromise rather than direct credential theft.</p>
+    <h3>Review vendor security practices before signing up</h3>
+    <p>Before giving a third-party AI tool access to your API credentials, ask how they store keys, whether they've undergone independent security testing, and what their incident disclosure policy is. Vendors who can't answer these questions clearly warrant additional scrutiny.</p>
+
+    <div class="checklist">
+      <h3>Checklist</h3>
+      <ul>
+        <li>Inventory every third-party AI tool that holds your API credentials</li>
+        <li>Create separate API keys for each integration — never share keys across services</li>
+        <li>Set up per-key usage monitoring and alerts</li>
+        <li>Review vendor security practices before providing API access</li>
+        <li>Rotate keys for any vendor that discloses a security incident</li>
+        <li>Check vendor security disclosure pages periodically</li>
+      </ul>
+    </div>
+  </div>
+  <footer class="adv-footer">
+    <p>This advisory was produced by Kariba Security Group (KSG) based on threat intelligence from Anthropic's September 2026 report <em>Detecting and Countering Misuse of AI</em> and our own analysis. KSG has no commercial relationship with any vendor mentioned and receives no compensation for any mention.</p>
+    <p>KSG provides application security consulting for businesses navigating the security challenges of AI adoption. Contact us at <a href="https://karibasecuritygroup.com">karibasecuritygroup.com</a> or <a href="mailto:patience@karibasecurity.com">patience@karibasecurity.com</a>.</p>
+    <p class="share-line">This advisory may be freely shared and redistributed with attribution to Kariba Security Group.</p>
+  </footer>
+</article>
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 96 96" fill="none"><polygon points="48,6 76,6 90,30 76,54 48,54 34,30" fill="none" stroke="#C9974A" stroke-width="2"/><rect x="43" y="19" width="4" height="22" fill="#C9974A"/><polygon points="47,19 64,19 56,30 47,30" fill="#C9974A"/><polygon points="47,30 56,30 65,41 65,45 58,45 47,38" fill="#C9974A"/></svg>
+    Kariba Security Group
+  </div>
+  <div class="footer-copy">© 2026 Kariba Security Group. All rights reserved.</div>
+</footer>
+</body>
+</html>
